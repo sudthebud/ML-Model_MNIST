@@ -1,0 +1,6 @@
+# Data
+data
+
+# Python VENV
+ML-Model_MNIST_venv
+*.whl
