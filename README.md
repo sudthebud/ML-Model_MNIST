@@ -4,4 +4,4 @@ Machine learning model created using my [General Purpose ML Model package](https
 
 Dataset retrieved from [Georgia Tech DiSL](https://git-disl.github.io/GTDLBench/datasets/mnist_datasets/).
 
-[MNIST Model Dataset](results/model_performance.png)
+![MNIST Model Dataset](results/model_performance.png)

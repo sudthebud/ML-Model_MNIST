@@ -1,6 +1,9 @@
 # Data
 data
 
+# Results
+results/*.sudml
+
 # Python VENV
 ML-Model_MNIST_venv
 *.whl
