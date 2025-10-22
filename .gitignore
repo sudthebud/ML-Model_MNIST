@@ -2,7 +2,7 @@
 data
 
 # Results
-results/*.sudml
+# results/*.sudml
 
 # Python VENV
 ML-Model_MNIST_venv
