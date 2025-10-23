@@ -30,5 +30,5 @@ All metrics calculated (except for accuracy) are a sum of that metric calculated
 
 ![MNIST Model - Testing Data Confusion Matrix](results/model_confusion_matrix.png)
 
-## Credits
+## Resources
 Dataset retrieved from [Georgia Tech DiSL](https://git-disl.github.io/GTDLBench/datasets/mnist_datasets/).
