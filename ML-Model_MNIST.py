@@ -81,13 +81,14 @@ else:
 
 
     costs, epochOutputs = model.train(trainData_input, 
-                        trainData_output,
-                        batchSize = 64,
-                        epochs = 100,
-                        learningRateSchedulerFunc=LearningRateSchedulerFunc.EXPONENTIAL_DECAY,
-                        learningRate=0.001,
-                        epochPrintInterval=20,
-                        returnOutput=True)
+                                      trainData_output,
+                                      batchSize = 64,
+                                      epochs = 100,
+                                      shuffleDataset = True,
+                                      learningRateSchedulerFunc=LearningRateSchedulerFunc.EXPONENTIAL_DECAY,
+                                      learningRate=0.001,
+                                      epochPrintInterval=20,
+                                      returnOutput=True)
     
     costs = 1/costs.shape[1] * np.sum(costs, axis=1)
     epochAccuracies = np.empty((epochOutputs.shape[0], 1))
@@ -103,6 +104,7 @@ else:
     plt.ylim(0, max(np.max(costs), np.max(epochAccuracies), 1))
     plt.xlabel("Epoch")
     plt.ylabel("Cost / Accuracy")
+    plt.legend(loc = "lower left")
     plt.title("Model Training Performance by Epoch")
     plt.savefig(os.path.join(RESULTS_DIRPATH, "model_performance.png"))
 
@@ -122,7 +124,21 @@ f1 = np.round(np.mean(f1), 4)
 print(f"Accuracy:\t\t{accuracy}\nRecall:\t\t\t{recall}\nFalse Positive Rate:\t{fpr}\nPrecision:\t\t{precision}\nF1 Score:\t\t{f1}")
 
 
+confusionMatrix = np.zeros((predictions.shape[1], testData_output.shape[1]))
+for trueVal, predVal in zip(np.argmax(testData_output, axis = 1), np.argmax(predictions, axis = 1)):
+    confusionMatrix[predVal, trueVal] += 1
+
 plt.clf()
+plt.figure(figsize = (8, 8))
+plt.imshow(confusionMatrix)
+for (i, j), val in np.ndenumerate(confusionMatrix): # Thanks to @Joe Kington on StackOverflow for this (https://stackoverflow.com/questions/20998083/show-the-values-in-the-grid-using-matplotlib)
+    plt.text(j, i, f"{int(val)}", ha='center', va='center', bbox=dict(boxstyle='round', facecolor='white', edgecolor='0.3'))
+plt.xticks(np.arange(testData_output.shape[1]))
+plt.yticks(np.arange(predictions.shape[1]))
+plt.xlabel("True Digit")
+plt.ylabel("Predicted Digit")
+plt.title("Model Test Data Confusion Matrix")
+plt.savefig(os.path.join(RESULTS_DIRPATH, "model_confusion_matrix.png"))
 
 
 # Predict
