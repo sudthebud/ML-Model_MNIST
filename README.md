@@ -1,6 +1,6 @@
 # MNIST Dataset - General Purpose ML Model
 
-Machine learning model created using my [General Purpose ML Model package](https://github.com/sudthebud/ML-Model_General-Purpose), designed for the [MNIST Dataset](https://en.wikipedia.org/wiki/MNIST_database), a beginner machine learning dataset. Achieved an accuracy on testing data of ~**94%**.
+A machine learning model created using my [General Purpose ML Model package](https://github.com/sudthebud/ML-Model_General-Purpose), designed for the [MNIST Dataset](https://en.wikipedia.org/wiki/MNIST_database), a beginner machine learning dataset which consists of thousands of images of handwritten digits (0-9). This script trains a model on the training data, tests it on the testing data, produces metrics and visualizations, and predicts on any custom images. On average, the model (an instance of which is saved in [```results/mnist_model.sudml```](results/mnist_model.sudml)) achieved an accuracy on testing data of ~**94%**.
 
 ## How to Use
 1. Clone the repo
