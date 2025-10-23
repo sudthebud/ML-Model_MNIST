@@ -116,11 +116,14 @@ print ("\nTesting model...")
 predictions = model.predict(testData_input)
 
 accuracy, recall, fpr, precision, f1 = classification_metrics(predictions, testData_output)
+metricWeights = np.sum(testData_output, axis = 0) / testData_output.shape[0]
+
 accuracy = np.round(accuracy, 4)
-recall = np.round(np.mean(recall), 4)
-fpr = np.round(np.mean(fpr), 4)
-precision = np.round(np.mean(precision), 4)
-f1 = np.round(np.mean(f1), 4)
+recall = np.round(np.sum(recall * metricWeights), 4)
+fpr = np.round(np.sum(fpr * metricWeights), 4)
+precision = np.round(np.sum(precision * metricWeights), 4)
+f1 = np.round(np.sum(f1 * metricWeights), 4)
+
 print(f"Accuracy:\t\t{accuracy}\nRecall:\t\t\t{recall}\nFalse Positive Rate:\t{fpr}\nPrecision:\t\t{precision}\nF1 Score:\t\t{f1}")
 
 
