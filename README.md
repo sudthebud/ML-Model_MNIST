@@ -12,6 +12,7 @@ A machine learning model created using my [General Purpose ML Model package](htt
     - The data should be a CSV in the format ```digit, pxl_1_1, pxl_1_2, ..., pxl_28_28```
     - Keep the training and testing data in separate CSV files labeled ```mnist_train.csv``` and ```mnist_test.csv```, respectively
 3. Insert any custom made test images you want to classify in the ```prediction_inputs``` folder
+    - Images must be _28 x 28_ pixels and ```.png``` format
 4. Run the script ```ML-Model_MNIST.py```
     - Set the flag ```RETRAIN_MODEL``` to ```True``` if you would like to change model attributes and/or retrain the model **(this will overwrite the saved model ```mnist_model.sudml``` in the ```results``` folder)**
 5. View any updated plots in the ```results``` folder
